@@ -16,6 +16,8 @@ import WidgetKit
 
 
 struct ACList: View {
+    @Environment(\.colorScheme) var colorScheme
+    
 //    @EnvironmentObject var settings: UserSettings
         
 //    @StateObject var acModels = AcModelWrapper()
@@ -33,6 +35,11 @@ struct ACList: View {
     init(selectedAirconIP: String?) {
         if let selectedAirconIP = selectedAirconIP {
             _selectedAC = State(initialValue: selectedAirconIP)
+        }
+    }
+    var lightGray: Color {
+        get {
+            systemGray6(colorScheme: colorScheme)
         }
     }
     var body: some View {
@@ -151,16 +158,34 @@ struct ACList: View {
                 .scaledToFit()
                 .frame(height:20)
             }
-            Image(systemName: "arrow.right")
-            .resizable()
-            .scaledToFit()
-            .frame(height:10)
-            .zIndex(-1)
-            .padding(.leading, -5)
-            Text("\(acModel.targetTemperature.description) ℃")
+            if acModel.mode.isTemperatureMode {
+                Image(systemName: "arrow.right")
+                .resizable()
+                .scaledToFit()
+                .frame(height:10)
+                .zIndex(-1)
+                .padding(.leading, -5)
+                Text(acModel.targetTemperature.celsius)
+            }
         }
+        .padding(5)
+        .background(colorForMode(acModel: acModel).opacity(0.1))
+        //.background(lightGray)
+        .overlay(RoundedRectangle(cornerRadius: 5)
+                    .stroke(colorForMode(acModel: acModel), lineWidth: 1))
+
     }
-    
+    func colorForMode(acModel: ACModel) -> Color {
+        
+        if acModel.mode == .cooling {
+            return .coldBlue
+        }
+        
+        if acModel.mode == .heating {
+            return .warmRed
+        }
+        return .clear
+    }
     var firstErrorMessage: String? {
         get {
             for acModel in acModels.acModels {

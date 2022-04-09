@@ -61,6 +61,17 @@ enum Mode: Int, DaikinAttrib, CaseIterable, Identifiable {
         }
     }
     static let allSelectable = [Mode.auto1, Mode.cooling, Mode.heating, Mode.fan, Mode.dry]
+    
+    var isTemperatureMode: Bool {
+        get {
+            switch (self) {
+            case .auto0, .auto1, .auto7, .heating, .cooling:
+                return true
+            default:
+                return false
+            }
+        }
+    }
 }
 
 

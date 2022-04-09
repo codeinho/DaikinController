@@ -54,6 +54,14 @@ struct ACView: View {
                     Spacer()
                     Label("\(Int(acModel.huminity))%", systemImage: "humidity.fill")
                     Spacer()
+                    HStack { // outside temp
+                        Image(systemName: "house")
+                            .padding(0).zIndex(1)
+                        Image(systemName: "thermometer")
+                            .padding(.horizontal, -10)
+                        Text("\(acModel.outsideTemperature.celsius)")
+                    }
+                    Spacer()
                 }
                 
                 
