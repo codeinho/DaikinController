@@ -145,35 +145,31 @@ struct ACList: View {
         Text("\(acModel.insideTemperature.description) ℃")
     }
     func makeMode(acModel: ACModel) -> some View {
-        
         HStack {
             if acModel.controlInfo.state == .ready {
-            Image(systemName: acModel.mode.iconName)
-                .resizable()
-                .scaledToFit()
-                .frame(height:20)
+                Group {
+                    Image(systemName: acModel.mode.iconName)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height:20)
+                    if acModel.mode.isTemperatureMode {
+                        Image(systemName: "arrow.right")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height:10)
+                        .zIndex(-1)
+                        .padding(.leading, -5)
+                        Text(acModel.targetTemperature.celsius)
+                    }
+                }
+                .foregroundColor(colorForMode(acModel: acModel))
             } else {
                 Image(systemName: "hourglass")
                 .resizable()
                 .scaledToFit()
                 .frame(height:20)
             }
-            if acModel.mode.isTemperatureMode {
-                Image(systemName: "arrow.right")
-                .resizable()
-                .scaledToFit()
-                .frame(height:10)
-                .zIndex(-1)
-                .padding(.leading, -5)
-                Text(acModel.targetTemperature.celsius)
-            }
         }
-        .padding(5)
-        .background(colorForMode(acModel: acModel).opacity(0.1))
-        //.background(lightGray)
-        .overlay(RoundedRectangle(cornerRadius: 5)
-                    .stroke(colorForMode(acModel: acModel), lineWidth: 1))
-
     }
     func colorForMode(acModel: ACModel) -> Color {
         
@@ -184,7 +180,7 @@ struct ACList: View {
         if acModel.mode == .heating {
             return .warmRed
         }
-        return .clear
+        return .gray
     }
     var firstErrorMessage: String? {
         get {
