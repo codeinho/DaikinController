@@ -1,5 +1,5 @@
 #  DaikinController
-- *Not* officical by Daikin
+- *Not* official by Daikin
 - work in progress
 
 iOS and macOS app to control Daikin air conditioning units. The macOS version is fundamentally working, but the focus lies on the iOS version.
