@@ -19,6 +19,7 @@ enum StorageKeys: String {
     case colorSchemeSetting
 }
 
+public let SETTINGS_DEMO_MODE = false // for screenshots etc.
 
 fileprivate let notSetStr = "Not Set"
 fileprivate let darkStr   = "dark"
@@ -76,10 +77,15 @@ class UserSettings: ObservableObject {
     }
     
     static func getAcListForWidget() -> [Aircon]? {
+        if SETTINGS_DEMO_MODE {
+            return [Aircon(name: "Living Room", ip: "DEMO0"), Aircon(name: "Sleeping Room", ip: "DEMO1"), Aircon(name: "Kitchen", ip: "DEMO2")]
+        }
+        
         guard let settings = UserDefaults(suiteName: appGroup) else {
             print("Warning: Could not read settings from main app")
             return nil
         }
+        
         let acIPs = settings.stringArray(forKey: StorageKeys.acIPs.rawValue) ?? []
         let acNameCache = settings.dictionary(forKey: StorageKeys.acNameCache.rawValue) as? [String:String] ?? [:]
         return acIPs.map {

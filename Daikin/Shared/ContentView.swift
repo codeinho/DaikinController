@@ -10,11 +10,10 @@ import SwiftUI
 fileprivate let NAV_SETTINGS = "SETTINGS"
 fileprivate let NAV_FIRST_AC = "FIRST_AC"
 
-fileprivate let DEMO_MODE = false
 
 struct ContentView: View {
     
-    @StateObject var acModels = AcModelWrapper(demoMode: DEMO_MODE)
+    @StateObject var acModels = AcModelWrapper(demoMode: SETTINGS_DEMO_MODE)
     @StateObject var settings = UserSettings.shared
     // goto settings to enter IPs on first start
     @State private var navigationTag: String? = (UserSettings.shared.acIPs.count == 0) ? NAV_SETTINGS : NAV_FIRST_AC
