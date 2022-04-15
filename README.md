@@ -27,5 +27,5 @@ With the widgets you can directly go to a specific device, skipping the choice i
 
 Tested with device FTXA-AW, stylish, FW 1.14.48 and 1.14.58
 but should work with most Daikin air conditioning units.
-There are some features for which you will the official app, e.g. FW update.
+There are some features for which you will need the official app, e.g. FW update.
 
