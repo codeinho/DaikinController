@@ -9,7 +9,6 @@ import Foundation
 import Combine
 
 
-
 // from https://stackoverflow.com/questions/69033796/swiftui-create-class-with-array-property-witch-conform-to-observableobject
 class AcModelWrapper: ObservableObject {
     @Published var acModels: [ACModel]
@@ -20,9 +19,13 @@ class AcModelWrapper: ObservableObject {
 //        subscribeToChanges()
 //    }
     
-    init() {
+    init(demoMode: Bool = false) {
         // get ip addresses from settings and create array of models
-        self.acModels = settings.acList.map{ ACModel(acIP: $0.ip, acName: $0.name) }
+        if demoMode {
+            self.acModels = [ACModel(acIP: "DEMO0"), ACModel(acIP: "DEMO1"), ACModel(acIP: "DEMO2")]
+        } else {
+            self.acModels = settings.acList.map{ ACModel(acIP: $0.ip, acName: $0.name) }
+        }
         subscribeToChanges()
     }
     

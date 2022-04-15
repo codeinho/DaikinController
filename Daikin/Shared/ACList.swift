@@ -30,7 +30,6 @@ struct ACList: View {
 //        settings = UserSettings()
 //        AcModelWrapper(acModels: settings.acList.map{ ACModel(acIP: $0.ip, acName: $0.name) })
 //        _acModels = StateObject(wrappedValue: AcModelWrapper(acModels: settings.acList.map{ ACModel(acIP: $0.ip, acName: $0.name) }))
-       
     }
     init(selectedAirconIP: String?) {
         if let selectedAirconIP = selectedAirconIP {

@@ -139,6 +139,10 @@ public extension EndpointDataProtocol {
             return try Self(from: Self.responseTestString)
         }
         
+        if (acIP.starts(with: "DEMO")) {
+            return try Self(from: getDemoDataResponse(fakeIp: acIP, endpoint: Self.endpoint_GET))
+        }
+        
         let url = try buildUrl(acIP: acIP, params: params, endpoint: Self.endpoint_GET)
         
         return try await fetch(url: url, params: params)

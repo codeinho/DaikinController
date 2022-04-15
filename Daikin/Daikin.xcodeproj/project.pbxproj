@@ -15,6 +15,8 @@
 		270820302786C2BF004716C6 /* ViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2708202E2786C2BF004716C6 /* ViewHelper.swift */; };
 		2722E5AF278B864F00EEB99E /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2722E5AE278B864F00EEB99E /* NetworkHelper.swift */; };
 		2722E5B0278B864F00EEB99E /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2722E5AE278B864F00EEB99E /* NetworkHelper.swift */; };
+		2751C68928095E31002A394E /* DemoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2751C68828095E31002A394E /* DemoData.swift */; };
+		2751C68A28095E31002A394E /* DemoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2751C68828095E31002A394E /* DemoData.swift */; };
 		27641E7527A1605A004B1BF2 /* AcModelWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27641E7427A1605A004B1BF2 /* AcModelWrapper.swift */; };
 		27641E7627A1605A004B1BF2 /* AcModelWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27641E7427A1605A004B1BF2 /* AcModelWrapper.swift */; };
 		276F49FD27744E6400B27DAD /* DaikinConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276F49FC27744E6400B27DAD /* DaikinConnection.swift */; };
@@ -97,6 +99,7 @@
 		2708202B27842A45004716C6 /* AlertTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTypes.swift; sourceTree = "<group>"; };
 		2708202E2786C2BF004716C6 /* ViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewHelper.swift; sourceTree = "<group>"; };
 		2722E5AE278B864F00EEB99E /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
+		2751C68828095E31002A394E /* DemoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoData.swift; sourceTree = "<group>"; };
 		27641E7427A1605A004B1BF2 /* AcModelWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcModelWrapper.swift; sourceTree = "<group>"; };
 		276F49FC27744E6400B27DAD /* DaikinConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaikinConnection.swift; sourceTree = "<group>"; };
 		276F4A012774760000B27DAD /* Daikin--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Daikin--iOS--Info.plist"; sourceTree = "<group>"; };
@@ -278,6 +281,7 @@
 				276F49FC27744E6400B27DAD /* DaikinConnection.swift */,
 				27A6C65F275B82BC003A0CEE /* ACModel.swift */,
 				2722E5AE278B864F00EEB99E /* NetworkHelper.swift */,
+				2751C68828095E31002A394E /* DemoData.swift */,
 			);
 			path = DaikinController;
 			sourceTree = "<group>";
@@ -482,6 +486,7 @@
 			files = (
 				2708202C27842A45004716C6 /* AlertTypes.swift in Sources */,
 				27A6C64C275B80A5003A0CEE /* ContentView.swift in Sources */,
+				2751C68928095E31002A394E /* DemoData.swift in Sources */,
 				27A6C64A275B80A5003A0CEE /* DaikinApp.swift in Sources */,
 				27EFB686277D161D00B3C238 /* SettingsView.swift in Sources */,
 				2722E5AF278B864F00EEB99E /* NetworkHelper.swift in Sources */,
@@ -502,6 +507,7 @@
 			files = (
 				2708202D27842A45004716C6 /* AlertTypes.swift in Sources */,
 				27A6C64D275B80A5003A0CEE /* ContentView.swift in Sources */,
+				2751C68A28095E31002A394E /* DemoData.swift in Sources */,
 				27A6C64B275B80A5003A0CEE /* DaikinApp.swift in Sources */,
 				27EFB687277D161D00B3C238 /* SettingsView.swift in Sources */,
 				2722E5B0278B864F00EEB99E /* NetworkHelper.swift in Sources */,

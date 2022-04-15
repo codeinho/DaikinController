@@ -5,8 +5,6 @@
     2.) show data as numbers/text
     3.) show data in charts
         - Source Will Dale --> new folder OR as module
-- outside temperature in ACView 
-- ACList: color for modes cold=blue, warm=red 
 - code clean up
 - shortcuts (intents?)
 - udpate AC data in ACView (onAppear is *not* called when coming from homescreen necessarliy)  
@@ -14,6 +12,7 @@
 - await in refreshable
 - implement automatically reload intervall?
 - broadcast
+- why is ACList.init() called multiple times?
 
 # Todo macOS
 - only 1 app instance/window
@@ -28,6 +27,8 @@
 
 
 ## Done
+- outside temperature in ACView 
+- ACList: color for modes cold=blue, warm=red 
 - settings
 - stop spinner on error/timeout
 - View ACList

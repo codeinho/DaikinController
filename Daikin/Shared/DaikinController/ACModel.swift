@@ -50,7 +50,7 @@ final public class ACModel: ObservableObject, Identifiable {
     @Published var controlInfo = Endpoint<ControlInfo>()
     @Published var sensorInfo = Endpoint<SensorInfo>()
 
-    var temperatureRange: (Int, Int) {
+    var temperatureRange: (min: Int, max:  Int) {
         get {
             switch mode {
             case .auto0, .auto1, .auto7:
@@ -135,6 +135,7 @@ final public class ACModel: ObservableObject, Identifiable {
             self.updateUserVariables()
         }
     }
+    
     private func update(from: BasicInfo) {
         DispatchQueue.main.async {
             self.name = from.nameReadable
@@ -163,7 +164,7 @@ final public class ACModel: ObservableObject, Identifiable {
 //        print( self.controlInfo.endpointData.minimalDict(togglePower: false, forMode: "h") )
     }
     
-    public func fetchData(force: Bool = false) {
+    public func fetchData() {
         print("fetchData \(acIP)")
         errorMessage = nil
         fetchControlInfo()
@@ -172,7 +173,7 @@ final public class ACModel: ObservableObject, Identifiable {
             fetchBasicInfo()
         }
         
-        if sensorInfo.state != .ready && !force {
+        if sensorInfo.state != .ready {
             fetchSensorInfo()
         }
     }
