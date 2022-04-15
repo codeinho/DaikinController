@@ -16,11 +16,11 @@ The main purpose of this app is to get quick and easy access to the ACs for the 
 
 The app launches directly with the list of available ACs, power on/off is availabe in the list:
 
-<img src="assets/images/ACList.png" width="400">
+<img src="assets/images/ACList.png" width="300">
 
 Control screen for a device when selected from the list:
 
-<img src="assets/images/ACView.png" width="400">
+<img src="assets/images/ACView.png" width="300">
 
 With the widgets you can directly go to a specific device, skipping the choice in the AC list. 
 TODO: widget screenshot
