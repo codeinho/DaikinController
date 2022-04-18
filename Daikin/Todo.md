@@ -1,8 +1,8 @@
 # Todo iOS and shared
 - error handling without popups?
 - consumption chart
-    1.) read comsumption data
-    2.) show data as numbers/text
+    1.) read comsumption data (done)
+    2.) show data as numbers/text (done)
     3.) show data in charts
         - Source Will Dale --> new folder OR as module
 - code clean up

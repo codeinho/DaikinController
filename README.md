@@ -23,6 +23,7 @@ Control screen for a device when selected from the list:
 <img src="assets/images/ACView.png" width="300">
 
 With the widgets you can directly go to a specific device, skipping the choice in the AC list. 
+
 <img src="assets/images/Widget.png" width="300">
 
 Tested with device FTXA-AW, stylish, FW 1.14.48 and 1.14.58

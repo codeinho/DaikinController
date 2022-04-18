@@ -152,7 +152,7 @@ extension Float: Identifiable {
         return self
     }
     
-    var celsius:String {
+    var celsius: String {
         get {
             return "\(self) ℃"
         }

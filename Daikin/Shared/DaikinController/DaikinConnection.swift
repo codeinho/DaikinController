@@ -114,9 +114,18 @@ public extension EndpointDataProtocol {
         }
         throw DaikinConnectionError.keyMissing(key: key, message: "key missing or invalid format: \(key)")
     }
-    fileprivate func intValue(key: String) throws -> Int {
+    func intValue(key: String) throws -> Int {
         if let value = acData[key], let intVal = Int(value) {
             return intVal
+        }
+        throw DaikinConnectionError.keyMissing(key: key, message: "key missing or invalid format: \(key)")
+    }
+    
+    func intArray(key: String) throws -> [Int] {
+        if let str = acData[key] {
+            // "0/2/1/1/1/1/1/2/1/1/1/1/2/1"
+            let strArr = str.components(separatedBy: "/")
+            return strArr.map { Int($0) ?? 0}
         }
         throw DaikinConnectionError.keyMissing(key: key, message: "key missing or invalid format: \(key)")
     }

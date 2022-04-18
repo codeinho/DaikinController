@@ -201,7 +201,7 @@ final public class ACModel: ObservableObject, Identifiable {
     }
         
     public func fetchControlInfo() {
-        Task.init {
+        Task {
             do {
                 DispatchQueue.main.async {
                     self.controlInfo.state = .loading
@@ -223,7 +223,7 @@ final public class ACModel: ObservableObject, Identifiable {
     }
     
     public func fetchSensorInfo() {
-        Task.init {
+        Task {
             do {
                 DispatchQueue.main.async {
                     self.sensorInfo.state = .loading
@@ -269,13 +269,13 @@ final public class ACModel: ObservableObject, Identifiable {
 //    }
     
     func togglePower() {
-        Task.init {
+        Task {
             let minimalDictToggledPower = controlInfo.endpointData.minimalDict(togglePower: true)
             await sendUpdateAndWait(params: minimalDictToggledPower)
         }
     }
     func setFanRate(to: FanRate) {
-        Task.init {
+        Task {
             if (specialModePowerful) {
                 // if powerful is on, we need to turn it off first
                 let specialModelEndpoint = Endpoint<SpecialMode>()
@@ -295,7 +295,7 @@ final public class ACModel: ObservableObject, Identifiable {
     }
     
     func setFanDirection(to: FanDirection) {
-        Task.init {
+        Task {
             var minimalDict = controlInfo.endpointData.minimalDict()
             minimalDict["f_dir"] = to.toAC
             await sendUpdateAndWait(params: minimalDict)
@@ -303,14 +303,14 @@ final public class ACModel: ObservableObject, Identifiable {
     }
     
     func setMode(to: Mode) {
-        Task.init {
+        Task {
             let minimalDict = controlInfo.endpointData.minimalDict(forNewMode: to)
             await sendUpdateAndWait(params: minimalDict)
         }
     }
     
     func setTargetTemperature(to: Temperature) {
-        Task.init {
+        Task {
             var minimalDict = controlInfo.endpointData.minimalDict()
             minimalDict["stemp"] = to.toAC
             await sendUpdateAndWait(params: minimalDict)

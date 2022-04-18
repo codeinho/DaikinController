@@ -30,6 +30,14 @@ struct ContentView: View {
                             Image(systemName: "slider.horizontal.3")
                             .foregroundColor(.gray)
                     }
+//                FIXME: the following doesn't work on macOS
+//                    NavigationLink(destination:
+//                                    ConsumptionView()
+//                                    .environmentObject(acModels)
+//                                    , tag: NAV_SETTINGS, selection: $navigationTag) {
+//                            Image(systemName: "chart.line.uptrend.xyaxis")
+//                            .foregroundColor(.gray)
+//                    }
                     Spacer()
                 }
                 .padding()
@@ -51,10 +59,19 @@ struct ContentView: View {
                     ToolbarItem(placement: .navigationBarLeading) {
                         NavigationLink(destination:
                             SettingsView()
-                            .environment(\.editMode, $editMode)
+                                .environment(\.editMode, $editMode)
+                                .environmentObject(acModels)
+                            ) {
+                                Image(systemName: "slider.horizontal.3")
+                                .foregroundColor(.gray)
+                        }
+                    }
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        NavigationLink(destination:
+                            ConsumptionView()
                             .environmentObject(acModels)
                             , tag: NAV_SETTINGS, selection: $navigationTag) {
-                                Image(systemName: "slider.horizontal.3")
+                                Image(systemName: "chart.line.uptrend.xyaxis")
                                 .foregroundColor(.gray)
                         }
                     }
