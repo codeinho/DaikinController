@@ -55,7 +55,7 @@ struct ConsumptionView: View {
             }
         }
         .toolbar {
-            ToolbarItemGroup(placement: tableBarItemPlacement) {
+            ToolbarItemGroup(placement: tableBarItemPlacement()) {
                 Text("Device")
                 Picker("", selection: $model.showIP) {
                     ForEach (model.ipSelection, id: \.self) { acIP in
@@ -69,14 +69,12 @@ struct ConsumptionView: View {
             await readConsumption()
         }
     }
-    var tableBarItemPlacement: ToolbarItemPlacement {
-        get {
-            #if os(macOS)
-            return .automatic
-            #else
-            return .navigationBarTrailing
-            #endif
-        }
+    func tableBarItemPlacement() -> ToolbarItemPlacement {
+        #if os(macOS)
+        return .automatic
+        #else
+        return .navigationBarTrailing
+        #endif
     }
     var listHeader: some View {
         HStack {

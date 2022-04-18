@@ -1,13 +1,11 @@
 # Todo iOS and shared
 - error handling without popups?
 - consumption chart
-    1.) read comsumption data (done)
-    2.) show data as numbers/text (done)
-    3.) show data in charts
+    3.) show data with bar charts
         - Source Will Dale --> new folder OR as module
 - code clean up
 - shortcuts (intents?)
-- udpate AC data in ACView (onAppear is *not* called when coming from homescreen necessarliy)  
+- udpate AC data in ACView (onAppear is *not* called always when coming from homescreen)  
 - iPad: network problems when aircon is selected via widget (maybe already solved with StackNavigationViewStyle?) 
 - await in refreshable
 - implement automatically reload intervall?
@@ -42,7 +40,10 @@
 - iPad: select first when in split view (solved with StackNavigationViewStyle)
 - iPad: close nav list when aircon is selected (solved with StackNavigationViewStyle)
 - delete aircon in settings does not work (works with 2 finger swipe)
-
+- consumption chart
+    1.) read comsumption data (done)
+    2.) show data as numbers/text (done)
+   
 
 
 # config notes
