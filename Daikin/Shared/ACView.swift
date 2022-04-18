@@ -391,19 +391,6 @@ struct ACView: View {
             return tempRange(from: from, to: to)
         }
     }
-    
-//    var alert2: AlertTypes? {
-//        get {
-//            switch (acModel.controlInfo.state) {
-//            case .error(let message):
-//                return .defaultButton(title: "Error", message: message)
-//            default:
-//                break
-//            }
-//            return nil
-//        }
-//    }
-    
 }
 
 /*

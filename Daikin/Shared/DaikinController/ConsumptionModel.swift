@@ -51,25 +51,27 @@ struct ConsumptionValue {
     
     var prevValueKWh: String {
         get {
-            return "\(String(format: "%.1f", self.prevValue)) kWh"
+            format_kWh(kWh: self.prevValue)
         }
     }
     var currValueKWh: String {
         get {
-            if let currValue = currValue {
-                return "\(String(format: "%.1f", currValue)) kWh"
-            }
-            return "- kWh"
+            format_kWh(kWh: self.currValue)
         }
     }
 }
 
-
+fileprivate func format_kWh(kWh: Double?) -> String {
+    if let kWh = kWh {
+        return "\(String(format: "%.1f", kWh)) kWh"
+    }
+    return "-"
+}
 
 // the Model used by the view
 final class ConsumptionModel: ObservableObject {
     
-    @Published var allIPs: [String] = []
+    @Published private(set) var allIPs: [String] = []
     @Published var showIP = "ALL" {      // default: show all
         didSet {
             Task {
@@ -82,11 +84,11 @@ final class ConsumptionModel: ObservableObject {
            return ["ALL"] + allIPs
         }
     }
-    @Published var currValCount = 0
-    @Published var prevHeat: [Double] = []
-    @Published var prevCool: [Double] = []
-    @Published var currHeat: [Double] = []
-    @Published var currCool: [Double] = []
+    @Published private(set) var currValCount = 0 // e.g. 7 on sundays, since we have 7 values from mo-su, 2 on tuesday (mo+tu)
+    @Published private(set) var prevHeat: [Double] = []
+    @Published private(set) var prevCool: [Double] = []
+    @Published private(set) var currHeat: [Double] = []
+    @Published private(set) var currCool: [Double] = []
 
     @Published var period = ConsumptionPeriod.day
     @Published var representation = ConsumptionRepresentation.sum {
@@ -95,8 +97,17 @@ final class ConsumptionModel: ObservableObject {
         }
       }
     
-    @Published var consumption: [ConsumptionValue] = []
-    
+    @Published private(set) var consumption: [ConsumptionValue] = []
+    var sumPrevPeriod: String {
+        get {
+            return format_kWh(kWh: consumption.reduce(0, { $0 + $1.prevValue}))
+        }
+    }
+    var sumCurrPeriod: String {
+        get {
+            return format_kWh(kWh: consumption.reduce(0, { $0 + ($1.currValue ?? 0) }))
+        }
+    }
     init() {
         for acIP in UserSettings.shared.acIPs {
             allIPs.append(acIP)
@@ -162,7 +173,7 @@ final class ConsumptionModel: ObservableObject {
     private func timespan(fromIndex: Int) -> String {
         return timespanText[period]![fromIndex]
     }
-    private let dateFormatter = DateFormatter()
+    
     private var timespanText: [ConsumptionPeriod: [String]] = [
         .day: (0...11).map {"\(String(format: "%02d", $0 * 2) ):00 - \(String(format: "%02d", $0 * 2 + 2)):00"},
         .week: [1,2,3,4,5,6,0].map {DateFormatter().weekdaySymbols[$0]},
