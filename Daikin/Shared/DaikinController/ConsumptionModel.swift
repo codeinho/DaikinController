@@ -51,17 +51,17 @@ struct ConsumptionValue {
     
     var prevValueKWh: String {
         get {
-            format_kWh(kWh: self.prevValue)
+            format(kWh: self.prevValue)
         }
     }
     var currValueKWh: String {
         get {
-            format_kWh(kWh: self.currValue)
+            format(kWh: self.currValue)
         }
     }
 }
 
-fileprivate func format_kWh(kWh: Double?) -> String {
+fileprivate func format(kWh: Double?) -> String {
     if let kWh = kWh {
         return "\(String(format: "%.1f", kWh)) kWh"
     }
@@ -100,12 +100,12 @@ final class ConsumptionModel: ObservableObject {
     @Published private(set) var consumption: [ConsumptionValue] = []
     var sumPrevPeriod: String {
         get {
-            return format_kWh(kWh: consumption.reduce(0, { $0 + $1.prevValue}))
+            return format(kWh: consumption.reduce(0, { $0 + $1.prevValue}))
         }
     }
     var sumCurrPeriod: String {
         get {
-            return format_kWh(kWh: consumption.reduce(0, { $0 + ($1.currValue ?? 0) }))
+            return format(kWh: consumption.reduce(0, { $0 + ($1.currValue ?? 0) }))
         }
     }
     init() {

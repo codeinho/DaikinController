@@ -463,9 +463,9 @@ extension Mode {
             case .dry:
                 return "humidity.fill"
             case .cooling:
-                return "thermometer.snowflake"
+                return "snowflake"  // "thermometer.snowflake"
             case .heating:
-                return "thermometer.sun" // "sun.max"
+                return "flame" // "thermometer.sun" // "sun.max"
             case .fan:
                 return "wind" // "fanblades"
             case .auto0, .auto1, .auto7:

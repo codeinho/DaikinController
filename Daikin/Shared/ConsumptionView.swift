@@ -14,6 +14,7 @@ struct ConsumptionView: View {
     
     var body: some View {
         VStack {
+            HStack {
             Picker("", selection: $model.period) {
                 ForEach (ConsumptionPeriod.allCases, id: \.self) { period in
                     Text("\(period.text)")
@@ -21,6 +22,7 @@ struct ConsumptionView: View {
                 }
             }
             .pickerStyle(.segmented)
+            .padding(.leading)
             .onChange(of: model.period, perform: { period in
                 Task {
                     await readConsumption()
@@ -30,9 +32,11 @@ struct ConsumptionView: View {
                 ForEach (ConsumptionRepresentation.allCases, id: \.self) { representation in
                         //Text("\(representation.text)")
                     modeIcon(representation: representation).tag(representation)
-                }
+                }.background(Color.red)
             }
             .pickerStyle(.segmented)
+            .padding(.trailing)
+            }
             List {
                 Section(header: listHeader) {
                               ForEach(model.consumption, id: \.id) { c in
@@ -51,7 +55,7 @@ struct ConsumptionView: View {
             }
         }
         .toolbar {
-            ToolbarItemGroup(placement: .navigationBarTrailing) {
+            ToolbarItemGroup(placement: tableBarItemPlacement) {
                 Text("Device")
                 Picker("", selection: $model.showIP) {
                     ForEach (model.ipSelection, id: \.self) { acIP in
@@ -63,6 +67,15 @@ struct ConsumptionView: View {
                 }
         .task {
             await readConsumption()
+        }
+    }
+    var tableBarItemPlacement: ToolbarItemPlacement {
+        get {
+            #if os(macOS)
+            return .automatic
+            #else
+            return .navigationBarTrailing
+            #endif
         }
     }
     var listHeader: some View {
@@ -102,7 +115,7 @@ struct ConsumptionView: View {
         let systemName: String
         switch representation {
         case .heat:
-            systemName = "sun.max"
+            systemName = "flame" // sun.max"
         case .cool:
             systemName = "snowflake"
         case .sum:
